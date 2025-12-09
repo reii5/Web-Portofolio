@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow State Protocol | Visualization</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent: #0ea5e9;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: var(--bg-dark);
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            pointer-events: none;
+            mix-blend-mode: difference;
+        }
+
+        h1 {
+            font-size: 1rem;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: auto;
+        }
+
+        .return-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .return-link:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        #p5_loading {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <h1>// FLOW_STATE_VISUALIZER</h1>
+        <p>Analyzing Rhythm...</p>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="return-link">Kembali ke Basis</a>
+
+    <div class="controls">
+        <span>[MOUSE_X]: Frequency</span>
+        <span>[MOUSE_Y]: Amplitude</span>
+    </div>
+
+    <!-- Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <script src="{{ url_for('static', filename='js/flow.js') }}"></script>
+</body>
+
+</html>
